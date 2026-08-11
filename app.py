@@ -37,11 +37,32 @@ def init_db():
         status TEXT DEFAULT 'Pending'
     )''')
 
+    # ---------------- Create Admin Account ----------------
+    admin_email = "admin@example.com"
+    admin_password = "1234"
+
+    admin = c.execute(
+        "SELECT id FROM users WHERE email=?",
+        (admin_email,)
+    ).fetchone()
+
+    if admin:
+        # Make sure the account is an admin
+        c.execute(
+            "UPDATE users SET password=?, role='admin' WHERE email=?",
+            (admin_password, admin_email)
+        )
+    else:
+        # Create the admin account
+        c.execute(
+            """INSERT INTO users (name, email, password, role)
+               VALUES (?, ?, ?, ?)""",
+            ("Administrator", admin_email, admin_password, "admin")
+        )
+
     conn.commit()
     conn.close()
-
 init_db()
-
 # ---------------- Home ----------------
 @app.route('/')
 def index():
