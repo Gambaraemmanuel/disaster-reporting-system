@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+    <div class="card">
+        <h2>Register</h2>
+
+        <form method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+
+            <div style="position: relative;">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span id="togglePassword" 
+                      style="position:absolute; right:10px; top:12px; cursor:pointer; user-select:none;">
+                    👁
+                </span>
+            </div>
+
+            <div style="position: relative;">
+                <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+                <span id="toggleConfirmPassword" 
+                      style="position:absolute; right:10px; top:12px; cursor:pointer; user-select:none;">
+                    👁
+                </span>
+            </div>
+
+            <button type="submit" class="primary-btn">Register</button>
+        </form>
+
+        <p style="margin-top:10px;">
+            Already have an account? <a href="/login">Login here</a>
+        </p>
+    </div>
+</div>
+
+<script>
+// Toggle Password
+const togglePassword = document.getElementById('togglePassword');
+const passwordField = document.getElementById('password');
+
+togglePassword.addEventListener('click', () => {
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+});
+
+// Toggle Confirm Password
+const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+const confirmPasswordField = document.getElementById('confirm_password');
+
+toggleConfirmPassword.addEventListener('click', () => {
+    const type = confirmPasswordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    confirmPasswordField.setAttribute('type', type);
+});
+</script>

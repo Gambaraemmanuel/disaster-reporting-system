@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+    <div class="card">
+        <h2>Login</h2>
+
+        <form method="POST">
+            <input type="email" name="email" placeholder="Email" required>
+
+            <div style="position: relative;">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span id="togglePassword" 
+                      style="position:absolute; right:10px; top:12px; cursor:pointer; user-select:none;">
+                    👁
+                </span>
+            </div>
+
+            <button type="submit" class="primary-btn">Login</button>
+        </form>
+
+        <p style="margin-top:10px;">
+            Don't have an account? <a href="/register">Register here</a>
+        </p>
+    </div>
+</div>
+
+<script>
+const togglePassword = document.getElementById('togglePassword');
+const passwordField = document.getElementById('password');
+
+togglePassword.addEventListener('click', () => {
+    const type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordField.setAttribute('type', type);
+});
+</script>

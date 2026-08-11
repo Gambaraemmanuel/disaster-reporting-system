@@ -1,0 +1,96 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="navbar">
+    <div class="nav-left">
+        <a href="/admin">All</a>
+        <a href="/admin?status=Pending">Pending</a>
+        <a href="/admin?status=Approved">Approved</a>
+        <a href="/admin?status=Resolved">Resolved</a>
+        <a href="/admin?status=Rejected">Rejected</a>
+    </div>
+    <div class="nav-right">
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>Admin Panel - Manage Disaster Reports</h2>
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="navbar">
+    <div class="nav-left">
+        <a href="/admin">All</a>
+        <a href="/admin?status=Pending">Pending</a>
+        <a href="/admin?status=Approved">Approved</a>
+        <a href="/admin?status=Resolved">Resolved</a>
+        <a href="/admin?status=Rejected">Rejected</a>
+    </div>
+    <div class="nav-right">
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>Admin Panel - Manage Disaster Reports</h2>
+
+```
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>User ID</th>
+            <th>Type</th>
+            <th>Description</th>
+            <th>Location</th>
+            <th>Status</th>
+            <th>Image</th>
+            <th>Actions</th>
+            
+        </tr>
+
+        {% for report in reports %}
+        <tr>
+            <td>{{ report[0] }}</td>
+            <td>{{ report[1] }}</td>
+            <td>{{ report[2] }}</td>
+            <td>{{ report[3] }}</td>
+            <td>{{ report[4] }}</td>
+            <td>{{ report[6] }}</td>
+
+            <td>
+                {% if report[5] %}
+                    <img src="{{ url_for('static', filename='uploads/' + report[5]) }}" width="80">
+                {% else %}
+                    No Image
+                {% endif %}
+            </td>
+
+            <td>
+                <a href="/update_status/{{ report[0] }}/Approved">
+                    <button class="admin-btn approve">Approve</button>
+                </a>
+                <a href="/update_status/{{ report[0] }}/Resolved">
+                    <button class="admin-btn resolve">Resolve</button>
+                </a>
+                <a href="/update_status/{{ report[0] }}/Rejected">
+                    <button class="admin-btn reject">Reject</button>
+                </a>
+            </td>
+
+            <td>
+                <form method="POST" action="/delete_report/{{ report[0] }}" style="display:inline;">
+                    <button type="submit" class="admin-btn delete"
+                    onclick="return confirm('Are you sure you want to delete this report?');">
+                    Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+```
+
+</div>

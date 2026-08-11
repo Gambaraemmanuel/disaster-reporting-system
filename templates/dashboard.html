@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="navbar">
+    <div class="nav-left">
+        <a href="/dashboard">All Reports</a>
+        <a href="/dashboard?status=Pending">Pending</a>
+        <a href="/dashboard?status=Approved">Approved</a>
+        <a href="/dashboard?status=Resolved">Resolved</a>
+        <a href="/dashboard?status=Rejected">Rejected</a>
+    </div>
+    <div class="nav-right">
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <h2>Your Disaster Reports</h2>
+
+        <a href="/report">
+            <button class="primary-btn">Report New Disaster</button>
+        </a>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Location</th>
+                <th>Status</th>
+                <th>Image</th>
+                <th>Action</th>
+            </tr>
+
+            {% for report in reports %}
+            <tr>
+                <td>{{ report[0] }}</td>
+                <td>{{ report[2] }}</td>
+                <td>{{ report[3] }}</td>
+                <td>{{ report[4] }}</td>
+                <td>{{ report[6] }}</td>
+
+                <td>
+                    {% if report[5] %}
+                        <img src="{{ url_for('static', filename='uploads/' + report[5]) }}" width="80">
+                    {% else %}
+                        No Image
+                    {% endif %}
+                </td>
+
+                <td>
+                    <!-- FIXED: removed current_user (you are not using Flask-Login) -->
+                    {% if session['role'] == 'admin' or session['user_id'] == report[1] %}
+                        <a href="/delete_report/{{ report[0] }}">
+                            <button class="delete-btn">Delete</button>
+                        </a>
+                    {% else %}
+                        <span style="color: gray;">No Access</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>

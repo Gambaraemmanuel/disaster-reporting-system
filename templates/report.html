@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<div class="container">
+<div class="card">
+
+<h2>Report Disaster</h2>
+
+<form method="POST" enctype="multipart/form-data">
+<input type="text" name="type" placeholder="Disaster Type">
+<textarea name="description" placeholder="Description"></textarea>
+<input type="text" name="location" placeholder="Location">
+<input type="file" name="image">
+<button type="submit">Submit</button>
+</form>
+
+</div>
+</div>

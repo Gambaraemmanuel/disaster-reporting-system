@@ -1,0 +1,174 @@
+/* ==========================
+   General Styles
+========================== */
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    color: #1e3a8a;
+}
+
+/* ==========================
+   Navbar Styles
+========================== */
+.navbar {
+    background: #1e3a8a;
+    padding: 15px 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+.navbar h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.navbar a:hover {
+    background: #facc15; /* golden hover */
+    color: #1e3a8a;
+}
+
+/* ==========================
+   Container & Card
+========================== */
+.container {
+    width: 90%;
+    margin: 30px auto;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* ==========================
+   Input & Buttons
+========================== */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #1e3a8a;
+    box-shadow: 0 0 5px rgba(30,58,138,0.5);
+    outline: none;
+}
+
+button, .primary-btn {
+    background: #1e3a8a;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+button:hover, .primary-btn:hover {
+    background: #facc15;
+    color: #1e3a8a;
+}
+
+/* ==========================
+   Table
+========================== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background: #1e3a8a;
+    color: white;
+}
+
+td img {
+    width: 80px;
+    border-radius: 5px;
+}
+
+/* ==========================
+   Admin Panel Buttons
+========================== */
+.admin-btn {
+    padding: 6px 10px;
+    margin: 2px;
+    border-radius: 5px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.approve { background: #10b981; color: white; }
+.approve:hover { background: #059669; }
+
+.resolve { background: #3b82f6; color: white; }
+.resolve:hover { background: #1e40af; }
+
+.reject { background: #ef4444; color: white; }
+.reject:hover { background: #b91c1c; }
+
+.delete, .delete-btn {
+    background: #dc2626;
+    color: white;
+}
+.delete:hover,
+.delete-btn:hover {
+    background: #991b1b;
+}
+
+/* ==========================
+   Password Toggle Icon
+========================== */
+#togglePassword, #toggleConfirmPassword {
+    font-size: 1.1rem;
+}
+
+/* ==========================
+   Responsive
+========================== */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar a {
+        margin: 8px 0 0 0;
+    }
+}
